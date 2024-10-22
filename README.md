@@ -20,6 +20,6 @@
 
 ## 🔌Shortened Script
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/ND-SCRIPT-HUB/refs/heads/main/ROBLOX-ND-SCRIPT-HUB"))()
+
 ```
 <br/>
