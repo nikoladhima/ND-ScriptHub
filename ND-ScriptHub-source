@@ -1,1 +1,1519 @@
+local CoreGui = game:GetService("StarterGui")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/Fluent/refs/heads/master/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/Fluent/master/Addons/InterfaceManager.lua"))()
 
+local Window = Fluent:CreateWindow({
+    Title = "ND ScriptHub‎ V.1.2.4", --..Fluent.Version,
+    SubTitle = "by Nikoleto Scripts ||| https://github.com/nikoladhima",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely (false recommended)
+    Theme = "Gremple",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+})
+
+--Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
+local Tabs = {
+    Game_Scripts = Window:AddTab({ Title = "Game Scripts", Icon = "rbxassetid://83262328821985" }),
+    Admin_Scripts = Window:AddTab({ Title = "Admin Scripts", Icon = "rbxassetid://83262328821985" }),
+    Universal_Scripts = Window:AddTab({ Title = "Universal Scripts", Icon = "rbxassetid://83262328821985"}),
+    --FE_Scripts = Window:AddTab({ Title = "FE Scripts", Icon = "rbxassetid://83262328821985"}),
+    Anti_Virus = Window:AddTab({ Title = "Anti Virus", Icon = "rbxassetid://119124462913986" }),
+    Extras = Window:AddTab({ Title = "Extras", Icon = "rbxassetid://97974676819697"}),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
+
+local Options = Fluent.Options
+--do
+    Fluent:Notify({
+        Title = "IMPORTANT NOTE",
+        Content = "If you find any bugs or have issues with the script then join the discord : https://discord.gg/PnRGjDztBu",
+        SubContent = "Script Version : V.1.2.4", -- Optional
+        Duration = 10 -- Set to nil to make the notification not disappear
+    })
+
+    --[[
+    
+    Tabs.FE_Scripts:AddParagraph({
+       Title = "No scripts added for now",
+        Content = ""
+    })
+
+        ]]
+    
+
+    function GetShortenedPlrFromName(name)
+        name = string.lower(tostring(name))
+     
+        if not game:GetService("Players"):FindFirstChild("me") and name == "me" or game:GetService("Players"):FindFirstChild("me") and game:GetService("Players"):FindFirstChild("me").ClassName ~= "Player" and name == "me" then
+            return {LocalPlayer}
+        end
+        if not game:GetService("Players"):FindFirstChild("all") and name == "all" or game:GetService("Players"):FindFirstChild("all") and game:GetService("Players"):FindFirstChild("all").ClassName ~= "Player" and name == "all" then
+            return game:GetService("Players"):GetPlayers()
+        end
+        if not game:GetService("Players"):FindFirstChild("others") and name == "others" or game:GetService("Players"):FindFirstChild("others") and game:GetService("Players"):FindFirstChild("others").ClassName ~= "Player" and name == "others" then
+            name = game:GetService("Players"):GetPlayers()
+            for i, v in pairs(name) do
+                if v == LocalPlayer then
+                    table.remove(name, i)
+                end
+            end
+            return name
+        end
+     
+        for i, v in pairs(game.Players:GetPlayers()) do
+            if string.lower(string.sub(v.DisplayName, 1, #name)) == name or string.lower(string.sub(v.Name, 1, #name)) == name then
+                return {v}
+            end
+        end
+     
+        return nil
+    end
+
+    --[[
+    
+    Tabs.FE_Scripts:AddButton({
+        Title = "",
+        Name = "",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "",
+                Content = "",
+                Buttons = {
+                    {
+                        Title = "Load script",
+                        Callback = function()
+                            
+                            print("Loaded ")
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                            print("Cancelled")
+                        end
+                    }
+                }
+            })
+        end
+    })
+
+    Tabs.FE_Scripts:AddButton({
+        Title = "",
+        Name = "",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "",
+                Content = "",
+                Buttons = {
+                    {
+                        Title = "Load script",
+                        Callback = function()
+                            
+                            print("Loaded ")
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                            print("Cancelled")
+                        end
+                    }
+                }
+            })
+        end
+    })
+
+
+    Tabs.FE_Scripts:AddButton({
+        Title = "",
+        Name = "",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "",
+                Content = "",
+                Buttons = {
+                    {
+                        Title = "Load script",
+                        Callback = function()
+                            
+                            print("Loaded ")
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                            print("Cancelled")
+                        end
+                    }
+                }
+            })
+        end
+    })
+
+
+    Tabs.FE_Scripts:AddButton({
+        Title = "",
+        Name = "",
+        Description = "",
+        Callback = function()
+            Window:Dialog({
+                Title = "",
+                Content = "",
+                Buttons = {
+                    {
+                        Title = "Load script",
+                        Callback = function()
+                            
+                            print("Loaded ")
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                            print("Cancelled")
+                        end
+                    }
+                }
+            })
+        end
+    })
+
+    ]]
+    
+    
+    Tabs.Game_Scripts:AddButton({
+        Title = "Breaking Plus+",
+        Name = "BP+",
+        Description = "The best Breaking Point script",
+        Callback = function()
+            Window:Dialog({
+                Title = "BP+",
+                Content = "Breaking Point",
+                Buttons = {
+                    {
+                        Title = "Load script",
+                        Callback = function()
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Plus/main/Script"))()
+                            print("Loaded Breaking Plus+")
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                            print("Cancelled")
+                        end
+                    }
+                }
+            })
+        end
+    })
+    
+Tabs.Game_Scripts:AddButton({
+    Title = "KAT Plus+",
+    Name = "KP+",
+    Description = "The best KAT script",
+    Callback = function()
+        Window:Dialog({
+            Title = "KP+",
+            Content = "Knife Ability Test",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Kat-Plus/main/Script"))()
+                        print("Loaded KAT Plus+")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+
+Tabs.Game_Scripts:AddButton({
+    Title = "The Strongest Battlegrounds",
+    Name = "Phantasm",
+    Description = "The BEST script for The Strongest Battlegrounds",
+    Callback = function()
+        Window:Dialog({
+            Title = "Phantasm",
+            Content = "The Strongest Battlegrounds",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/TSBG-SCRIPT-PHANTASM/refs/heads/main/TSBG"))()
+                        print("Loaded Phantasm")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "MacroV3 BSS script",
+    Name = "MacroV3",
+    Description = "BEST UNDETECTED SCRIPT for Bee Swarm Simulator (key system)",
+    Callback = function()
+        Window:Dialog({
+            Title = "MacroV3",
+            Content = "Join discord https://discord.gg/mv3 for Daily Key",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://www.macrov2-script.xyz/macrov3.lua"))()
+                        print("Loaded MacroV3")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "RIVALS cracked script",
+    Name = "RIVALS",
+    Description = "Best rivals script",
+    Callback = function()
+        Window:Dialog({
+            Title = "Rivals MS crack",
+            Content = "Fully Undetectable",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/Rivals_script/refs/heads/main/Rivals_script"))()
+                        print("Loaded Rivals MS cracked")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "SwagMode",
+    Name = "SwagMode",
+    Description = "The best Da Hood Script",
+    Callback = function()
+        Window:Dialog({
+            Title = "SwagMode Free Version",
+            Content = "SwagMode premium users will be able to abuse powerful premium commands on you",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://rawscripts.net/raw/Da-Hood-swagmode-source-4535"))()
+                        print("Loaded SwagMode")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Doors Script",
+    Name = "Doors Script",
+    Description = "The best Doors Script",
+    Callback = function()
+        Window:Dialog({
+            Title = "Black King |REMAKE|",
+            Content = "OP undetected features",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/KINGHUB01/BlackKing-obf/main/Doors%20Blackking%20And%20BobHub"))()
+                        print("Loaded Black King")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Murder Mystery 2",
+    Name = "Murder Mystery 2",
+    Description = "Some pc executors may experience issues with this script",
+    Callback = function()
+        Window:Dialog({
+            Title = "EclipseMM2",
+            Content = "Known to be the best script for MM2",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet(("https://raw.githubusercontent.com/Ethanoj1/EclipseMM2/master/Script"),true))() 
+                        print("Loaded EclipseMM2")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Bedwars",
+    Name = "Bedwars",
+    Description = "The best bedwars script (V.V4)",
+    Callback = function()
+        Window:Dialog({
+            Title = "Vape V4",
+            Content = "Undetected and OP features",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+                        task.wait(1)
+                        print("Loaded Vape V4")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Escape Papa's Pizzaria",
+    Name = "Escape Papa's Pizzaria",
+    Description = "Get all items/gamepass",
+    Callback = function()
+        for _,v in pairs(game:GetDescendants()) do
+            if v.ClassName == "RemoteEvent" then
+            if v.Parent.Name == "WeaponsRemotes" or v.Parent.Name == "VipRemotes" or v.Parent.Name == "Remotes" then
+            v:FireServer()
+            end
+            end
+            end
+        task.wait()
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Pet's Go",
+    Name = "Pet's Go",
+    Description = "One of the best scripts for Pet's Go",
+    Callback = function()
+        Window:Dialog({
+            Title = "AtherHub",
+            Content = "OP autofarm features",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/2529a5f9dfddd5523ca4e22f21cceffa.lua"))()
+                        print("Loaded AtherHub")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Dress To Impress",
+    Name = "Dress To Impress",
+    Description = "DTI fucker GUI",
+    Callback = function()
+        Window:Dialog({
+            Title = "Dress To Impress",
+            Content = "Extremely op, includes troll features",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/DTI-GUI-V2/main/dti_gui_v2.lua",true))()
+                        print("Loaded DTI fucker GUI")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Arsenal",
+    Name = "Arsenal",
+    Description = "The best script for Arsenal",
+    Callback = function()
+        Window:Dialog({
+            Title = "Tbao Hub",
+            Content = "OP undetected features",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/main/TbaoHubArsenal"))()
+                        print("Loaded TbaoHub")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Build a boat for treasure",
+    Name = "Build a boat for treasure",
+    Description = "Extremely OP/BROKEN features",
+    Callback = function()
+        Window:Dialog({
+            Title = "ZeeroxHub",
+            Content = "Undetected BABFT script",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet'https://raw.githubusercontent.com/RunDTM/ZeeroxHub/main/Loader.lua')()
+                        print("Loaded ZeeroxHub")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Fling Things And People",
+    Name = "Fling Things And People",
+    Description = "Take people to heaven",
+    Callback = function()
+        Window:Dialog({
+            Title = "FTAP script",
+            Content = "Take people to hell",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/BlizTBr/scripts/main/FTAP.lua"))()
+                        print("Loaded FTAP")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Funky Friday",
+    Name = "Funky Friday",
+    Description = "Undetected features",
+    Callback = function()
+        Window:Dialog({
+            Title = "FNF player",
+            Content = "OP autoplayer",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet('https://pastebin.com/raw/dcyuEgyK'))()
+                        print("Loaded FNF script")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Combat Warriors",
+    Name = "Combat Warriors",
+    Description = "The best CW script with undetected features",
+    Callback = function()
+        Window:Dialog({
+            Title = "Stratos Hub",
+            Content = "OP auto-parry and anti-parry",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://scriptblox.com/raw/Combat-Warriors-Stratos-Hub-17601"))()
+                        print("Loaded Stratos Hub")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Adopt Me",
+    Name = "Adopt Me",
+    Description = "Undetected features with OP autofarm(s)",
+    Callback = function()
+        Window:Dialog({
+            Title = "JulHub",
+            Content = "Who even plays this game anymore bro :skull:",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/JulHubz/JulHub/main/JulHub"))()
+                        print("Loaded JulHub")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Aimblox",
+    Name = "Aimblox",
+    Description = "OP script for aimblox",
+    Callback = function()
+        Window:Dialog({
+            Title = "Mex |REMAKE|",
+            Content = "OP aimbot and fully undetected features",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet('https://raw.githubusercontent.com/mexstudios/MexScripts/main/aimblox.lua'))()
+                        print("Loaded Mex |REMAKE|")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Flex Your FPS",
+    Name = "Flex Your FPS",
+    Description = "Make your fps look like you have a nasa pc in heaven",
+    Callback = function()
+        Window:Dialog({
+            Title = "FY-FPS",
+            Content = "Have fun making others kill their braincells with your custom fps",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet('https://raw.githubusercontent.com/v-oidd/flex-your-fps-script/main/script'))()
+                        print("Loaded FY-FPS script")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Untitled Boxing Game",
+    Name = "Untitled Boxing Gamee",
+    Description = "The BEST script for untitled boxing game",
+    Callback = function()
+        Window:Dialog({
+            Title = "UBG-AB",
+            Content = "Extemely OP Auto-Block",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/v/refs/heads/main/v"))()
+                        print("Loaded AutoBlock")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Horror RNG",
+    Name = "Horror RNG",
+    Description = "Literally just inf luck lol",
+    Callback = function()
+        Window:Dialog({
+            Title = "omg so scary real!! RNG",
+            Content = "This will probably get patched soon",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+
+                        while task.wait(0) do 
+                            game:GetService("ReplicatedStorage").Events.InventoryEvent:FireServer("Equip","Super Luck Potion","Usable") 
+                        end
+                       -- inf luck
+                        print("Loaded inf luck")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Evade",
+    Name = "Evade",
+    Description = "Halloween event autofarm",
+    Callback = function()
+        Window:Dialog({
+            Title = "ECF20491",
+            Content = "Autofarm for candy",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://rawscripts.net/raw/Evade-Evade-Candy-Farm-20491"))()
+                        print("Loaded Candy Autofarm")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Natural Disasters Survival",
+    Name = "Natural Disasters Survival",
+    Description = "Best script for Natural Disasters Survival",
+    Callback = function()
+        Window:Dialog({
+            Title = "CH Hub",
+            Content = "OP features like autofarm, launch rockets, remove blinding ui and more",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/ge/refs/heads/main/g"))()
+                        print("Loaded CH Hub")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "CounterBlox",
+    Name = "CounterBlox",
+    Description = "The best script for CounterBlox",
+    Callback = function()
+        Window:Dialog({
+            Title = "CB-Solaris",
+            Content = "OP aimbot and ESP",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://scriptblox.com/raw/Counter-Blox-Solaris-14633"))()
+                        print("Loaded CB-Solaris")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Taxi Boss",
+    Name = "Taxi Boss",
+    Description = "The best script for Taxi boss",
+    Callback = function()
+        Window:Dialog({
+            Title = "MScience",
+            Content = "OP autofarm and fully undetected features",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/main/Taxi%20Boss", true))()
+                        print("Loaded MScience")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Game_Scripts:AddButton({
+    Title = "Murderers VS Sheriffs",
+    Name = "Murderers VS Sheriffs",
+    Description = "The best script for MvsS",
+    Callback = function()
+        Window:Dialog({
+            Title = "MSVD",
+            Content = "OP features such as aimbot and esp",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/b/refs/heads/main/b"))()
+                        print("Loaded ")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Admin_Scripts:AddButton({
+    Title = "Infinite Yield",
+    Name = "Infinite Yield",
+    Description = "",
+    Callback = function()
+        Window:Dialog({
+            Title = "Infinite Yield",
+            Content = "Universal Admin",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+                        print("Loaded Infinite Yield")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Admin_Scripts:AddButton({
+    Title = "Nameless Admin",
+    Name = "Nameless Admin",
+    Description = "",
+    Callback = function()
+        Window:Dialog({
+            Title = "Nameless Admin",
+            Content = "Universal Admin",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))();
+                        print("Loaded Nameless Admin")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Admin_Scripts:AddButton({
+    Title = "Fate's Admin",
+    Name = "Fate's Admin",
+    Description = "",
+    Callback = function()
+        Window:Dialog({
+            Title = "Fate's Admin",
+            Content = "Universal Admin",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
+                        print("Loaded Fate's Admin")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Admin_Scripts:AddButton({
+    Title = "SystemBroken",
+    Name = "SystemBroken",
+    Description = "",
+    Callback = function()
+        Window:Dialog({
+            Title = "SystemBroken",
+            Content = "Some features can only be used in Ragdoll Engine",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script"))()
+                        print("Loaded SystemBroken")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Anti_Virus:AddButton({
+    Title = "Guardian V2",
+    Name = "Guardian V2",
+    Description = "Use at your own risk",
+    Callback = function()
+        Window:Dialog({
+            Title = "Guardian V2",
+            Content = "This script apparently protects you from roblox malicious scripts ⚠️USE AT YOUR OWN RISK⚠️",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/GalacticHypernova/Guardian/main/MainProd"))()
+                        print("Loaded Guardian V2 anti-virus")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Universal_Scripts:AddButton({
+    Title = "Energizer GUI",
+    Name = "Energizer GUI",
+    Description = "FE animations(R6 and R15 supported)",
+    Callback = function()
+        Window:Dialog({
+            Title = "Energizer GUI",
+            Content = "FE animations for R6 and R15",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/Energizer-GUI/refs/heads/main/FEanimationsR6-R15"))()
+                        print("Loaded Energizer GUI ")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Universal_Scripts:AddButton({
+    Title = "Free Anims/Emotes",
+    Name = "Free Anims/Emotes",
+    Description = "Every single animation and emote for free",
+    Callback = function()
+        Window:Dialog({
+            Title = "nik's FE,A-E",
+            Content = "FE || includes fanmade animations and ALL emotes",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/e/refs/heads/main/e"))()
+                        print("Loaded Free Animations & Emotes script")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Universal_Scripts:AddButton({
+    Title = "FE Fling GUI",
+    Name = "FLINGgui",
+    Description = "Most popular Fling GUI (REMAKE)",
+    Callback = function()
+        Window:Dialog({
+            Title = "Yeet GUI REMAKE",
+            Content = "Best fling script",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/Fling-script/refs/heads/main/Fling"))()
+                        print("Loaded Fe Yeet Gui REMAKE")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Universal_Scripts:AddButton({
+    Title = "SwimFly GUI",
+    Name = "SwimFly",
+    Description = "FlyGuiV3 REMAKE",
+    Callback = function()
+        Window:Dialog({
+            Title = "Swim Fly",
+            Content = "This fly method is buggy and uses water so it will make water sounds",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/SwimFly-GUI/e2c48933f44656bc0c3cde7cbb224421e09fa1ba/SwimFly-GUI"))()
+                        print("Loaded SwimFly GUI")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Universal_Scripts:AddButton({
+    Title = "UserCreationFIX",
+    Name = "UserCreationFIX",
+    Description = "Chat bypasser (key system)",
+    Callback = function()
+        Window:Dialog({
+            Title = "Best Chat Bypasser",
+            Content = "This is a fixed version of UserCreation",
+            Buttons = {
+                {
+                    Title = "Load script",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/1price/usercreation/refs/heads/main/UserCreation.lua", true))()
+                        print("Loaded UserCreation chat bypass")
+                    end
+                },
+                {
+                    Title = "Cancel",
+                    Callback = function()
+                        print("Cancelled")
+                    end
+                }
+            }
+        })
+    end
+})
+
+Tabs.Universal_Scripts:AddButton({
+    Title = "Hitbox Expander",
+    Name = "Hitbox Expander",
+    Description = "OP hitbox expander with some extra useful features",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/ignore/refs/heads/main/ignore"))()
+        print("Loaded Hitbox Expander")
+    end
+})
+
+    --[[local Toggle = Tabs.Game_Scripts:AddToggle("MyToggle", {Title = "Toggle", Default = false })
+
+    Toggle:OnChanged(function()
+        print("Toggle changed:", Options.MyToggle.Value)
+    end)
+
+    Options.MyToggle:SetValue(false)
+
+
+    
+    local Slider = Tabs.Game_Scripts:AddSlider("Slider", {
+        Title = "Slider",
+        Description = "This is a slider",
+        Default = 2,
+        Min = 0,
+        Max = 5,
+        Rounding = 1,
+        Callback = function(Value)
+            print("Slider was changed:", Value)
+        end
+    })
+
+    Slider:OnChanged(function(Value)
+        print("Slider changed:", Value)
+    end)
+
+    Slider:SetValue(3)
+
+
+
+    local Dropdown = Tabs.Game_Scripts:AddDropdown("Dropdown", {
+        Title = "Dropdown",
+        Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+        Multi = false,
+        Default = 1,
+    })
+
+    Dropdown:SetValue("four")
+
+    Dropdown:OnChanged(function(Value)
+        print("Dropdown changed:", Value)
+    end)
+
+
+    
+    local MultiDropdown = Tabs.Game_Scripts:AddDropdown("MultiDropdown", {
+        Title = "Dropdown",
+        Description = "You can select multiple values.",
+        Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+        Multi = true,
+        Default = {"seven", "twelve"},
+    })
+
+    MultiDropdown:SetValue({
+        three = true,
+        five = true,
+        seven = false
+    })
+
+    MultiDropdown:OnChanged(function(Value)
+        local Values = {}
+        for Value, State in next, Value do
+            table.insert(Values, Value)
+        end
+        print("Mutlidropdown changed:", table.concat(Values, ", "))
+    end)
+    ]]
+
+
+    Tabs.Extras:AddButton({
+        Title = "UNC Test",
+        Name = "UNC Test",
+        Description = "Test your executor's UNC",
+        Callback = function()
+            Window:Dialog({
+                Title = "UNC Test",
+                Content = "Fun fact: Most executors fake their UNC 💀",
+                Buttons = {
+                    {
+                        Title = "Load script",
+                        Callback = function()
+                            print("Testing UNC..")
+                            loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/UNC/refs/heads/main/UNC-test"))()
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                            print("Cancelled")
+                        end
+                    }
+                }
+            })
+        end
+    })
+
+    Tabs.Extras:AddButton({
+        Title = "Grab Tools",
+        Name = "Grab Tools",
+        Description = "Gets all Tools from Lighting",
+        Callback = function()
+            Window:Dialog({
+                Title = "Copy tools from Lighting",
+                Content = "Wont work on games that dont have tools in Lighting (Client Sided)",
+                Buttons = {
+                    {
+                        Title = "Load script",
+                        Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/getTools/refs/heads/main/Grab-Tools"))()    
+                            print("Copied all tools from Lighting")
+                        end
+                    },
+                    {
+                        Title = "Cancel",
+                        Callback = function()
+                            print("Cancelled")
+                        end
+                    }
+                }
+            })
+        end
+    })
+
+    Tabs.Extras:AddButton({
+        Title = "TP tool",
+        Name = "TP tool",
+        Description = "Use the tool to teleport anywhere you click",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/TP/refs/heads/main/tptool"))()
+        end
+    })
+
+    Tabs.Extras:AddButton({
+        Title = "Clear Inventory",
+        Name = "Clear Inventory",
+        Description = "Clears your whole inventory",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/CI/refs/heads/main/Clear-Inventory"))()
+    end
+    })
+
+    Tabs.Extras:AddButton({
+        Title = "Reset",
+        Name = "Reset",
+        Description = "Resets your character",
+        Callback = function()
+            game.Players.LocalPlayer.Character.Humanoid.Health = 0
+        end
+    })
+
+    local Input = Tabs.Extras:AddInput("Input", {
+        Title = "TP to player",
+        Default = "",
+        Placeholder = "username",
+        Numeric = false, -- Only allows numbers
+        Finished = true, -- Only calls callback when you press enter
+        Callback = function(Value)
+            for i,Player in GetShortenedPlrFromName(Value) do
+                if Player.Character.HumanoidRootPart ~= nil then 
+                    print("Teleported to", Player.DisplayName)
+                LocalPlayer.Character.HumanoidRootPart.CFrame = Player.Character.HumanoidRootPart.CFrame
+                end
+                end
+        end
+    })
+
+
+    --[[Input:OnChanged(function()
+        print("Input updated:", Input.Value)
+    end)
+    ]]
+
+   --[[local Toggle = Tabs.Game_Scripts:AddToggle("MyToggle", {Title = "Toggle", Default = false })
+
+    Toggle:OnChanged(function()
+
+
+    end)
+
+    Options.MyToggle:SetValue(false)]]
+    
+
+    --[[
+    
+    local Colorpicker = Tabs.Extras:AddColorpicker("Colorpicker", {
+        Title = "Colorpicker",
+        Default = Color3.fromRGB(96, 205, 255)
+    })
+
+    Colorpicker:OnChanged(function()
+        print("Colorpicker changed:", Colorpicker.Value)
+    end)
+    
+    Colorpicker:SetValueRGB(Color3.fromRGB(0, 255, 140))
+
+
+
+    local TColorpicker = Tabs.Extras:AddColorpicker("TransparencyColorpicker", {
+        Title = "Colorpicker",
+        Description = "but you can change the transparency.",
+        Transparency = 0,
+        Default = Color3.fromRGB(96, 205, 255)
+    })
+
+    TColorpicker:OnChanged(function()
+        print(
+            "TColorpicker changed:", TColorpicker.Value,
+            "Transparency:", TColorpicker.Transparency
+        )
+    end)
+
+    ]]
+
+
+    --[[local Keybind = Tabs.Game_Scripts:AddKeybind("Keybind", {
+        Title = "KeyBind",
+        Mode = "Toggle", -- Always, Toggle, Hold
+        Default = "LeftControl", -- String as the name of the keybind (MB1, MB2 for mouse buttons)
+
+        -- Occurs when the keybind is clicked, Value is `true`/`false`
+        Callback = function(Value)
+            print("Keybind clicked!", Value)
+        end,
+
+        -- Occurs when the keybind itself is changed, `New` is a KeyCode Enum OR a UserInputType Enum
+        ChangedCallback = function(New)
+            print("Keybind changed!", New)
+        end
+    })
+
+    -- OnClick is only fired when you press the keybind and the mode is Toggle
+    -- Otherwise, you will have to use Keybind:GetState()
+    Keybind:OnClick(function()
+        print("Keybind clicked:", Keybind:GetState())
+    end)
+
+    Keybind:OnChanged(function()
+        print("Keybind changed:", Keybind.Value)
+    end)
+
+    task.spawn(function()
+        while true do
+            task.wait(1)
+
+            -- example for checking if a keybind is being pressed
+            local state = Keybind:GetState()
+            if state then
+                print("Keybind is being held down")
+            end
+
+            if Fluent.Unloaded then break end
+        end
+    end)
+
+    Keybind:SetValue("MB2", "Toggle") -- Sets keybind to MB2, mode to Hold
+
+
+    local Input = Tabs.Game_Scripts:AddInput("Input", {
+        Title = "Input",
+        Default = "Default",
+        Placeholder = "Placeholder",
+        Numeric = false, -- Only allows numbers
+        Finished = false, -- Only calls callback when you press enter
+        Callback = function(Value)
+            print("Input changed:", Value)
+        end
+    })
+
+    Input:OnChanged(function()
+        print("Input updated:", Input.Value)
+    end)
+end]]
+
+
+-- Addons:
+-- SaveManager (Allows you to have a configuration system)
+-- InterfaceManager (Allows you to have a interface managment system)
+
+-- Hand the library over to our managers
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+
+-- Ignore keys that are used by ThemeManager.
+-- (we dont want configs to save themes, do we?)
+SaveManager:IgnoreThemeSettings()
+
+-- You can add indexes of elements the save manager should ignore
+SaveManager:SetIgnoreIndexes({})
+
+-- use case for doing it this way:
+-- a script hub could have themes in a global folder
+-- and game configs in a separate folder per game
+InterfaceManager:SetFolder("FluentScriptHub")
+SaveManager:SetFolder("FluentScriptHub/specific-game")
+
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+SaveManager:BuildConfigSection(Tabs.Settings)
+
+
+Window:SelectTab(1)
+
+--[[Fluent:Notify({
+    Title = "Fluent",
+    Content = "The script has been loaded.",
+    Duration = 8
+})
+ ]]
+
+-- You can use the SaveManager:LoadAutoloadConfig() to load a config
+-- which has been marked to be one that auto loads!
+SaveManager:LoadAutoloadConfig()
+
+task.wait(15)
+local virtualUser = game:GetService('VirtualUser')
+local players = game:GetService('Players')
+local player = players.LocalPlayer
+
+game:GetService('Players').LocalPlayer.Idled:Connect(function()
+   virtualUser:CaptureController()
+   virtualUser:ClickButton2(Vector2.new())
+   print('anti-afk triggered')
+end)
+print("Loaded Built-in Anti-AFK")
+
+--loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/ND-SCRIPT-HUB/refs/heads/main/ROBLOX-ND-SCRIPT-HUB"))()
