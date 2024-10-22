@@ -15,7 +15,8 @@
 - Updated some scripts
 - Bug Fixes
 - ↓↓ New game Scripts added ↓↓
-- **Aimblox, Flex Your Fps, Untitled Boxing Game, Horror RNG, Evade, Natural Disasters Survival, CounterBlox, Taxi Boss, Murderers VS Sheriffs**
+
+**Aimblox, Flex Your Fps, Untitled Boxing Game, Horror RNG, Evade, Natural Disasters Survival, CounterBlox, Taxi Boss, Murderers VS Sheriffs**
 
 ## 🔌Shortened Script
 ```lua
