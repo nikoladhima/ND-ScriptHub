@@ -1,5 +1,6 @@
 ## Script Thumbnail
-<img src="Assets/Screenshot_15.png" alt="ND Script Hub">
+![Uploading NDthumbnail.png…]()
+
 
 ## ⚡ Features
 
