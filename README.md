@@ -20,6 +20,6 @@
 
 ## 🔌Shortened Script
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/ND-ScriptHub/refs/heads/main/ND-ScriptHub-source"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/nikoladhima/ND-ScriptHub/refs/heads/main/ND-ScriptHub"))()
 ```
 <br/>
