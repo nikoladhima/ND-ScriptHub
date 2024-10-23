@@ -1,3 +1,5 @@
+--ND Script Hub made by nikoleto scripts ||| https://github.com/nikoladhima--
+
 local CoreGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
