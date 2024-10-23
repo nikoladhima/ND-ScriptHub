@@ -1,6 +1,5 @@
 ## Script Thumbnail
-![Uploading NDthumbnail.png…]()
-
+![NDthumbnail](https://github.com/user-attachments/assets/9dd8ce9e-1759-4623-9119-7c75ca2c9ea4)
 
 ## ⚡ Features
 
