@@ -420,7 +420,7 @@ Tabs.Game_Scripts:AddButton({
                     Title = "Load script",
                     Callback = function()
                         loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
-                        task.wait(1)
+                        task.wait(5)
                         print("Loaded Vape V4")
                     end
                 },
@@ -481,17 +481,17 @@ Tabs.Game_Scripts:AddButton({
 Tabs.Game_Scripts:AddButton({
     Title = "Dress To Impress",
     Name = "Dress To Impress",
-    Description = "DTI fucker GUI",
+    Description = "DTI GUI",
     Callback = function()
         Window:Dialog({
             Title = "Dress To Impress",
-            Content = "Extremely op, includes troll features",
+            Content = "Extremely op",
             Buttons = {
                 {
                     Title = "Load script",
                     Callback = function()
                         loadstring(game:HttpGet("https://raw.githubusercontent.com/hellohellohell012321/DTI-GUI-V2/main/dti_gui_v2.lua",true))()
-                        print("Loaded DTI fucker GUI")
+                        print("Loaded DTI GUI")
                     end
                 },
                 {
